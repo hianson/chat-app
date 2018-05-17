@@ -1,4 +1,4 @@
-const messages = (state = { socket: null, user: '', messages: [] }, action) => {
+const messages = (state = { user: '', messages: [] }, action) => {
   switch (action.type) {
     case 'ADD_MESSAGE':
       console.log('adding message to store:', action.payload)
