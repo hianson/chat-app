@@ -3,11 +3,8 @@ import { connect } from 'react-redux'
 
 class Messages extends Component {
   render() {
-    let user = this.props.state.user
-
-    if (!user) user = 'guest'
     var messages = this.props.state.messages.map(function(msg, idx) {
-      return <li key={idx}>{user}: {msg}</li>
+      return <li key={idx}>{msg.user}: {msg.body}</li>
     })
 
     return(

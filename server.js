@@ -5,7 +5,7 @@ var io = require('socket.io')(serv)
 io.on('connection', function(socket) {
   console.log('Client connected:', socket.id)
   socket.on('new-message', function(msg) {
-    console.log(socket.id + ':', msg)
+    console.log(msg.user + ':', msg.body)
     io.emit('receive-message', msg)
   })
 })

@@ -18,7 +18,9 @@ class AddMessage extends Component {
       <div>
         <form onSubmit={(e) => {
           e.preventDefault()
-          socket.emit('new-message', input.value)
+          let user = this.props.user
+          if (!user) user = 'guest'
+          socket.emit('new-message', {user, body: input.value})
           input.value = ''
         }}>
           <input ref={node => input = node} />
@@ -29,8 +31,12 @@ class AddMessage extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  user: state.messages.user
+})
+
 const mapDispatchToProps = dispatch => ({
   addMessage: (msg) => dispatch(addMessage(msg))
 })
 
-export default connect(undefined, mapDispatchToProps)(AddMessage)
+export default connect(mapStateToProps, mapDispatchToProps)(AddMessage)

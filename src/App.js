@@ -1,15 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Chatroom from './components/Chatroom'
+import Username from './containers/Username'
 import './App.css';
+import { connect } from 'react-redux'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Chatroom />
-      </div>
-    );
-  }
+const App = props => {
+  const container = props.user ? (<Chatroom />) : (<Username />)
+  return (
+    <div className="App">
+      {container}
+    </div>
+  );
 }
 
-export default App;
+const mapStateToProps = state => ({
+  user: state.messages.user
+})
+
+export default connect(mapStateToProps)(App);
