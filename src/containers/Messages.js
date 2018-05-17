@@ -3,18 +3,21 @@ import { connect } from 'react-redux'
 
 class Messages extends Component {
   render() {
-    var messages = this.props.messages.map(function(msg, idx) {
-      return <li key={idx}>{msg}</li>
+    let user = this.props.state.user
+
+    if (!user) user = 'guest'
+    var messages = this.props.state.messages.map(function(msg, idx) {
+      return <li key={idx}>{user}: {msg}</li>
     })
 
     return(
-      <div>{ messages }</div>
+      <div>{messages}</div>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  messages: state.messages.messages
+  state: state.messages
 })
 
 export default connect(mapStateToProps)(Messages)
