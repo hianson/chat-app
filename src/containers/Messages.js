@@ -32,7 +32,7 @@ const messagesContainer = {
   padding: '7px',
   marginBottom: '15px',
   width: '50vw',
-  height: '40vh',
+  height: '30vh',
   border: '1px solid #565452',
   borderRightColor: '#d7d8d4',
   borderBottomColor: '#d7d8d4',

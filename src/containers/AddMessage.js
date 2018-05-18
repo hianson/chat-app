@@ -19,6 +19,7 @@ class AddMessage extends Component {
         <form onSubmit={(e) => {
           e.preventDefault()
           let user = this.props.user
+          if (!input.value) return
           if (!user) user = socket.id
           socket.emit('new-message', {user, body: input.value})
           input.value = ''

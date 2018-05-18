@@ -1,6 +1,9 @@
-var app = require('express')()
-var serv = require('http').Server(app)
-var io = require('socket.io')(serv)
+const express = require('express')
+const app = express()
+const serv = require('http').Server(app)
+const io = require('socket.io')(serv)
+
+const port = process.env.PORT || 3001
 
 io.on('connection', function(socket) {
   console.log('Client connected:', socket.id)
@@ -10,6 +13,6 @@ io.on('connection', function(socket) {
   })
 })
 
-serv.listen('3001', function() {
+serv.listen(port, function() {
   console.log('Server started.')
 })
