@@ -4,11 +4,17 @@ import Messages from '../containers/Messages'
 
 const Chatroom = () => {
   return (
-    <div>
+    <div style={chatroomStyle}>
       <Messages />
       <AddMessage />
     </div>
   )
+}
+
+const chatroomStyle = {
+  background: '#d4d0c8',
+  padding: '30px',
+  boxShadow: '2px 2px 2px #5d5c59'
 }
 
 export default Chatroom
