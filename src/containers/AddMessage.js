@@ -24,6 +24,7 @@ class AddMessage extends Component {
           input.value = ''
         }}>
           <input style={msgFieldStyle} ref={node => input = node} />
+          &nbsp;
           <button>Send</button>
         </form>
       </div>
@@ -35,7 +36,7 @@ const addMessageStyle = {
 }
 
 const msgFieldStyle = {
-  width: '75vw',
+  width: '45vw',
   outline: 'none',
 }
 

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 class Messages extends Component {
 
   scrollToBottom = () => {
-    this.lastMessage.scrollIntoView({ behavior: 'smooth' })
+    this.lastMessage.scrollIntoView({ behavior: 'instant' })
   }
 
   componentDidUpdate() {
@@ -31,9 +31,11 @@ const messagesContainer = {
   overflowY: 'scroll',
   padding: '7px',
   marginBottom: '15px',
-  width: '80vw',
-  height: '60vh',
+  width: '50vw',
+  height: '40vh',
   border: '1px solid #565452',
+  borderRightColor: '#d7d8d4',
+  borderBottomColor: '#d7d8d4',
   boxShadow: '-1px -1px 1px #5d5c59',
   background: 'white',
   fontFamily: 'Times New Roman',
