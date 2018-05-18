@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addMessage } from '../actions'
-const socket = window.io('http://localhost:3001')
+const socket = window.io('/')
 let input
 
 class AddMessage extends Component {
