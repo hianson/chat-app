@@ -1,26 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Chatroom from './components/Chatroom'
 import Username from './containers/Username'
 import { connect } from 'react-redux'
+import { setSocket } from './actions'
 
-const App = props => {
-  const container = props.user ? <Chatroom /> : <Username />
-  return (
-    <div style={appStyle}>
-      {container}
-    </div>
-  );
+const socket = window.io('/')
+
+class App extends Component {
+  componentDidMount() {
+    this.props.setSocket(socket)
+  }
+
+  render() {
+    const container = this.props.user ? <Chatroom /> : <Username />
+    return (
+      <div style={appStyle}>
+        {container}
+      </div>
+    );
+  }
 }
 
 const appStyle = {
   height: '100vh',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  background: '#008080'
 }
 
 const mapStateToProps = state => ({
   user: state.messages.user
 })
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  setSocket: (socket) => dispatch(setSocket(socket))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
