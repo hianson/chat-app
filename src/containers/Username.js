@@ -6,19 +6,22 @@ let user
 class Username extends Component {
   render() {
     return(
-      <div>
+      <div style={usernameStyle}>
         <form onSubmit={(e) => {
           e.preventDefault()
           if (!user.value) return
           this.props.setUser(user.value)
         }}>
           <input placeholder='Enter username' ref={node => user = node} />
-          <br/>
           <button>Chat</button>
         </form>
       </div>
     )
   }
+}
+
+const usernameStyle = {
+  textAlign: 'center'
 }
 
 const mapStateToProps = state => ({
