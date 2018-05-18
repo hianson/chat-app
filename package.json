@@ -1,21 +1,24 @@
 {
   "name": "chat-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "express": "^4.16.3",
-    "http": "0.0.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-redux": "^5.0.7",
-    "react-scripts": "1.1.4",
-    "redux": "^4.0.0",
-    "socket.io": "^2.1.0"
-  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "install": "(cd client && npm i) && (cd server && npm i)",
+    "start": "concurrently \"cd client && PORT=3000 npm start\" \"cd server && PORT=3001 npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hianson/chat-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hianson/chat-app/issues"
+  },
+  "homepage": "https://github.com/hianson/chat-app#readme",
+  "dependencies": {
+    "concurrently": "^3.5.1"
   }
 }
