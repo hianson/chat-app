@@ -13,6 +13,7 @@ class Username extends Component {
           this.props.setUser(user.value)
         }}>
           <input placeholder='Enter username' ref={node => user = node} />
+          &nbsp;
           <button>Chat</button>
         </form>
       </div>

@@ -14,9 +14,10 @@ const Chatroom = () => {
 }
 
 const chatroomStyle = {
+  width: '45vw',
+  height: '35vh',
   background: 'linear-gradient(to right, #cacac1, #c4c4bc)',
-  padding: '30px',
-  // border: '1px solid #e9eced',
+  padding: '35px',
   borderTop: '2px solid #dbdcd6',
   borderLeft: '2px solid #dbdcd6',
   boxShadow: '2px 2px 2px #5d5c59'

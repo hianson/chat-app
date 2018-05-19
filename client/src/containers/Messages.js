@@ -35,10 +35,11 @@ class Messages extends Component {
 
 const messagesContainer = {
   overflowY: 'scroll',
+  margin: 'auto',
   padding: '7px',
   marginBottom: '15px',
-  width: '50vw',
-  height: '30vh',
+  width: '95%',
+  height: '80%',
   border: '1px solid #565452',
   borderRightColor: '#d7d8d4',
   borderBottomColor: '#d7d8d4',

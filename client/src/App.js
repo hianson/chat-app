@@ -3,6 +3,7 @@ import Chatroom from './components/Chatroom'
 import Username from './containers/Username'
 import { connect } from 'react-redux'
 import { setSocket } from './actions'
+import bg from './img/mac_bac.jpg'
 
 const socket = window.io('/')
 
@@ -26,7 +27,8 @@ const appStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  background: '#008080'
+  backgroundImage: `url(${bg})`,
+  backgroundSize: 'cover'
 }
 
 const mapStateToProps = state => ({

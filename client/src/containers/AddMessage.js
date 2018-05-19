@@ -44,10 +44,12 @@ class AddMessage extends Component {
 }
 
 const addMessageStyle = {
+  width: '90%',
+  padding: '7px',
 }
 
 const msgFieldStyle = {
-  width: '45vw',
+  width: '90%',
   outline: 'none',
 }
 
