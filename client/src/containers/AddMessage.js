@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addMessage } from '../actions'
-const socket = window.io('/')
+import { addMessage, receiveUser } from '../actions'
 let input
 
 class AddMessage extends Component {
   componentDidMount() {
+    var user = this.props.user
     var self = this
 
-    socket.on('receive-message', function(msg) {
+    this.props.socket.on('receive-message', function(msg) {
       self.props.addMessage(msg)
+    })
+
+    this.props.socket.emit('new-user', user)
+
+    this.props.socket.on('receive-user', function(data) {
+      self.props.addMessage(data)
     })
   }
 
@@ -20,8 +26,8 @@ class AddMessage extends Component {
           e.preventDefault()
           let user = this.props.user
           if (!input.value) return
-          if (!user) user = socket.id
-          socket.emit('new-message', {user, body: input.value})
+          if (!user) user = this.props.socket.id
+          this.props.socket.emit('new-message', {user, body: input.value})
           input.value = ''
         }}>
           <input style={msgFieldStyle} ref={node => input = node} />
@@ -42,11 +48,13 @@ const msgFieldStyle = {
 }
 
 const mapStateToProps = state => ({
-  user: state.messages.user
+  user: state.messages.user,
+  socket: state.messages.socket
 })
 
 const mapDispatchToProps = dispatch => ({
-  addMessage: (msg) => dispatch(addMessage(msg))
+  addMessage: (msg) => dispatch(addMessage(msg)),
+  receiveUser: (user) => dispatch(receiveUser(user))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddMessage)

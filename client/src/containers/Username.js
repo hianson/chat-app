@@ -25,7 +25,7 @@ const usernameStyle = {
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+  socket: state.messages.socket
 })
 
 const mapDispatchToProps = dispatch => ({

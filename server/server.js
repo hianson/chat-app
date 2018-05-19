@@ -16,6 +16,11 @@ io.on('connection', function(socket) {
     console.log(msg.user + ':', msg.body)
     io.emit('receive-message', msg)
   })
+
+  socket.on('new-user', function(user) {
+    io.emit('receive-user', { user, type: 'join', body: 'has joined.' })
+    console.log(user, 'has joined chatroom.')
+  })
 })
 
 server.listen(port, function() {

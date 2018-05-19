@@ -7,3 +7,13 @@ export const setUser = user => ({
   type: 'SET_USER',
   payload: user
 })
+
+export const setSocket = socket => ({
+  type: 'SET_SOCKET',
+  payload: socket
+})
+
+export const receiveUser = user => ({
+  type: 'RECEIVE_USER',
+  payload: user
+})
