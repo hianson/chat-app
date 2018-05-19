@@ -26,9 +26,12 @@ io.on('connection', function(socket) {
   })
 
   socket.on('disconnect', function() {
-    let user = USERS[socket.id] || socket.id
-    
-    io.emit('remove-user', { user, type: 'leave', body: 'has left.'})
+    let user = USERS[socket.id]
+
+    if (user) {
+      io.emit('remove-user', { user, type: 'leave', body: 'has left.'})
+      delete USERS[socket.id]
+    }
   })
 })
 
