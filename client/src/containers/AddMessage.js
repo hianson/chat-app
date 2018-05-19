@@ -1,14 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addMessage } from '../actions'
+import { addMessage, receiveUser } from '../actions'
 let input
 
 class AddMessage extends Component {
   componentDidMount() {
+    var user = this.props.user
     var self = this
 
     this.props.socket.on('receive-message', function(msg) {
       self.props.addMessage(msg)
+    })
+
+    this.props.socket.emit('new-user', user)
+
+    this.props.socket.on('receive-user', function(data) {
+      self.props.addMessage(data)
     })
   }
 
@@ -46,7 +53,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  addMessage: (msg) => dispatch(addMessage(msg))
+  addMessage: (msg) => dispatch(addMessage(msg)),
+  receiveUser: (user) => dispatch(receiveUser(user))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddMessage)
