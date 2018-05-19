@@ -10,6 +10,8 @@ app.use(express.static(path.join(__dirname, '../client/build')))
 app.get('/', (req, res, next) =>
   res.sendFile(__dirname + '/index.html'))
 
+USERS = {}
+
 io.on('connection', function(socket) {
   console.log('Client connected:', socket.id)
   socket.on('new-message', function(msg) {
@@ -18,8 +20,15 @@ io.on('connection', function(socket) {
   })
 
   socket.on('new-user', function(user) {
+    USERS[socket.id] = user
     io.emit('receive-user', { user, type: 'join', body: 'has joined.' })
     console.log(user, 'has joined chatroom.')
+  })
+
+  socket.on('disconnect', function() {
+    let user = USERS[socket.id] || socket.id
+    
+    io.emit('remove-user', { user, type: 'leave', body: 'has left.'})
   })
 })
 

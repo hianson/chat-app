@@ -14,7 +14,10 @@ class Messages extends Component {
   render() {
     var messages = this.props.state.messages.map(function(msg, idx) {
       if (msg.type === 'join') {
-        return <li style={{fontStyle: 'italic'}} key={idx}>{msg.user} {msg.body}</li>
+        return <li style={{fontStyle: 'italic'}} key={idx}>&gt;&gt; {msg.user} {msg.body}</li>
+      }
+      if (msg.type === 'leave') {
+        return <li style={{fontStyle: 'italic'}} key={idx}>&lt;&lt; {msg.user} {msg.body}</li>
       }
       return <li key={idx}><strong>{msg.user}</strong>: {msg.body}</li>
     })

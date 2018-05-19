@@ -17,6 +17,10 @@ class AddMessage extends Component {
     this.props.socket.on('receive-user', function(data) {
       self.props.addMessage(data)
     })
+
+    this.props.socket.on('remove-user', function(data) {
+      self.props.addMessage(data)
+    })
   }
 
   render() {
